@@ -1,7 +1,7 @@
 #include <cstdio>
 #include <cstring>
 char arr[30];
-int i, j, k;
+int i, j, k,o;
 int main()
 {
 	scanf("%s", arr);
