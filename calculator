@@ -1,0 +1,78 @@
+
+#include <iostream>
+#include <cmath>
+#include <iomanip>
+using namespace std;
+
+const float EPS = 0.0000001;
+void scan_data(char &, float &);
+void do_next_op(char &, float &, float &);
+
+int ipow(int base, int exp)
+{
+	int result = 1;
+	while (exp)
+	{
+		if (exp & 1)
+			result *= base;
+		exp >>= 1;
+		base *= base;
+	}
+
+	return result;
+}
+float Abs(float a)
+{
+	if (a < EPS)
+		return -a;
+	else
+		return a;
+}
+int main()
+{
+	char symbol = 0;
+	float number = 0;
+	float accumulatedNumber = 0;
+
+	cout << fixed;
+
+	while (symbol != 'q')
+	{
+		scan_data(symbol, number);
+		do_next_op(symbol, number, accumulatedNumber);
+
+		if (symbol != 'q')
+			cout << "result so far is " << setprecision(1) << accumulatedNumber << endl;
+	}
+
+	cout << "final result is " << setprecision(2) << accumulatedNumber << endl;
+}
+void scan_data(char & operant, float & operand)
+{
+	cin >> operant >> operand;
+}
+void do_next_op(char & operant, float & operand, float & accumulated)
+{
+	if (operant == '+')
+		accumulated += operand;
+
+	else if (operant == '-')
+		accumulated -= operand;
+
+	else if (operant == '*')
+		accumulated *= operand;
+
+	else if (operant == '/')
+	{
+		if (Abs(operand - 0.0) < EPS)
+			cout << "Division by 0" << endl;
+		else
+			accumulated /= operand;
+	}
+
+	else if (operant == '^')
+		accumulated = ipow(accumulated, operand);
+
+	else if (operant != 'q')
+		cout << "Enter a valid operator" << endl;
+}
