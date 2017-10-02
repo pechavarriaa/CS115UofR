@@ -1,3 +1,37 @@
+//  ========================================================================== 
+// | Assignment One : FRACTION
+// |
+// | Author : PABLO ECHAVARRIA
+// | Language : C PLUS PLUS OBJECT ORIENTED
+// | To Compile : EXPLAIN HOW TO COMPILE THIS PROGRAM
+// | Instructor : MEHRAN MEHRANDEZH Ph.D., P.Eng.
+// | Due Date : SUNDAY, OCTOBER, 1, 2017 AT 11:59PM
+//  +--------------------------------------------------------------------------
+// | Description : Write a function that reads a problem involving two common
+// |			   fractions such as 2/4 + 5/6. After reading the common fractions 
+// |			   problem, call a function to perform the indicated operation 
+// |			   (call addFrac for +, call multiplyFrac for *, and so on).
+// |			   Pass the numerator and denominator of both fractions to the
+// |			   function that performs the operation; the function should return
+// |			   the numerator and denominator of the result through its output 
+// |			   parameters. Then display the result as a common fraction.
+// |			   (Hint: Use functions readFracProblem and getFrac; see Listings 6.3 and 6.4.)
+// |
+// | Input : Enter a common fraction problem: 3/4 + 5/6
+// |		 Enter a common fraction problem: 3/4 # 5/6
+// |		 Enter a common fraction problem: 2/7 * 3/8
+// |		 Enter a common fraction problem: 3/0 - 5/6
+// |
+// | Output : The result of the addition is 38/24
+// |		  Invalid operation!
+// |		  The result of the multiplication is 6/56
+// |		  Cannot solve this problem!
+// | Algorithm : OUTLINE THE APPROACH USED BY THE PROGRAM TO SOLVE THE
+// | PROBLEM.
+// | Required Features Not Included :
+// | Known Bugs :
+//  ============================================================================
+
 #include <iostream>
 #include <string>
 using namespace std;
