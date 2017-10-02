@@ -3,7 +3,6 @@
 // |
 // | Author : PABLO ECHAVARRIA
 // | Language : C++
-// | To Compile : EXPLAIN HOW TO COMPILE THIS PROGRAM
 // | Instructor : MUSTAKIM AL HELAL
 // | Due Date : SUNDAY, OCTOBER, 1, 2017 AT 11:59PM
 //  +--------------------------------------------------------------------------

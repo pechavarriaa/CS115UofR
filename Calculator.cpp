@@ -1,9 +1,8 @@
 //  ========================================================================== 
-// | Assignment One : FRACTION
+// | Assignment One : CALCULATOR
 // |
 // | Author : PABLO ECHAVARRIA
-// | Language : C PLUS PLUS OBJECT ORIENTED
-// | To Compile : EXPLAIN HOW TO COMPILE THIS PROGRAM
+// | Language : C++
 // | Instructor : MUSTAKIM AL HELAL
 // | Due Date : SUNDAY, OCTOBER, 1, 2017 AT 11:59PM
 //  +--------------------------------------------------------------------------
