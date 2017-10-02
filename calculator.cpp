@@ -1,13 +1,13 @@
 //  ========================================================================== 
-// | Assignment One : CALCULATOR
+// | Assignment One : FRACTION
 // |
-// | Author : JUAN ECHAVARRIA
-// | Language : MATLAB
+// | Author : PABLO ECHAVARRIA
+// | Language : C PLUS PLUS OBJECT ORIENTED
 // | To Compile : EXPLAIN HOW TO COMPILE THIS PROGRAM
-// | Instructor : MEHRAN MEHRANDEZH Ph.D., P.Eng.
-// | Due Date : FRIDAY 11, 2017 AT 9 : 00AM
+// | Instructor : MUSTAKIM AL HELAL
+// | Due Date : SUNDAY, OCTOBER, 1, 2017 AT 11:59PM
 //  +--------------------------------------------------------------------------
-// | Description : Write a program to model a simple calculator. Each data line 
+// | Description :         Write a program to model a simple calculator. Each data line 
 // |			   should consist of the next operation to be performed from the 
 // |			   list below and the right operand. Assume the left operand is 
 // |			   the accumulator value (initial value of 0). You need a function
@@ -23,7 +23,7 @@
 // |			   /	divide
 // |			   ^	power(raise left operand to power of right operand)
 // |
-// | Input : DIFFERENTIAL EQUATIONS REPRESENTING DC MOTOR.
+// | Input : 
 // | Output : STATE - SPACE REPRESENTATION OF DC MOTOR.
 // | Algorithm : OUTLINE THE APPROACH USED BY THE PROGRAM TO SOLVE THE
 // | PROBLEM.
