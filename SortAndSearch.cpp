@@ -15,46 +15,43 @@ const int ARR_SIZE = 1000;
 
 class readNumbers{
 public:
- void readIntegers();
+  void readIntegers();
 protected:
   int numbers[ARR_SIZE];
   int arrSize;
 }
 
-class BubbleSort private readNumbers{
+class bubbleSort private readNumbers{
 public:
-  void bubbleSort();
+  void sort();
   int search(int searchNumber);
   BubbleSort();
-private:
-  int arr[ARR_SIZE];
-  int size;
 };
 
-
+/*
 BubbleSort::BubbleSort()
 {
-  size = arrSize;
-  for(int i=0;i<
+  
+}
+*/
+
+void readNumbers::readIntegers()
+{
+    cout << "Enter the number of naturals:" << endl;
+    cin>>arrSize;
+    //read how many integers are going to be sorted
+    cout << "Enter the natural numbers to sort:" << endl;
+    for(int i =0;i<arrSize;i++)
+      {
+	cin>>numbers[i];
+	//read input values to sort
+      }
 }
 
 int main() 
 {
-  int sizeArray = 0;
-  cout << "Enter the number of naturals:" << endl;
-  cin >> sizeArray;
-  cout << "Enter the natural numbers to sort:" << endl;
-  readArray( array[], sizeArray);
-	
+
+  bubbleSort numbers;
+  numbers.readIntegers();
   return 0;
-}
-void readArray(int array[], int & arrSize)
-{
-  int array[arrSize];
-  while(arrSize--)
-    cin >> array[arrSize]; //Inserting the values into an array, 
-}
-void bubbleSort(array[])
-{
-	
 }
