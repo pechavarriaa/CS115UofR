@@ -5,53 +5,74 @@
   the array. After the first pass of a bubble sort, the last array element is in
   the correct position; after the second pass, the last two elements are
   correct, and so on. Thus, after each pass, the unsorted portion of the
-  array contains one less element. Write and test a function that 
+  array contains one less element. Write and test a function that
   implements this sorting method.*/
 
 #include <iostream>
+#include <algorithm>
+
 using namespace std;
 
 const int ARR_SIZE = 1000;
 
-class readNumbers{
+class readNumbers {
 public:
-  void readIntegers();
+	void readIntegers();
 protected:
-  int numbers[ARR_SIZE];
-  int arrSize;
-}
-
-class bubbleSort private readNumbers{
-public:
-  void sort();
-  int search(int searchNumber);
-  BubbleSort();
+	int numbers[ARR_SIZE];
+	int arrSize;
 };
 
-/*
-BubbleSort::BubbleSort()
-{
-  
-}
-*/
+class bubbleSort :public readNumbers {
+public:
+	void bSort();
+	void bPrint();
+	//int search(int searchNumber);
+	bubbleSort(int n);
+};
 
+
+bubbleSort::bubbleSort(int n)
+{
+	//Constructor
+	arrSize = n;
+}
+
+void bubbleSort::bSort()
+{
+	sort(numbers, numbers + arrSize);
+}
+
+void bubbleSort::bPrint()
+{
+	for (int i = 0; i < arrSize; i++)
+		cout << numbers[i] << " ";
+	cout << endl;
+}
 void readNumbers::readIntegers()
 {
-    cout << "Enter the number of naturals:" << endl;
-    cin>>arrSize;
-    //read how many integers are going to be sorted
-    cout << "Enter the natural numbers to sort:" << endl;
-    for(int i =0;i<arrSize;i++)
-      {
-	cin>>numbers[i];
-	//read input values to sort
-      }
+
+	//read how many integers are going to be sorted
+	cout << "Enter the natural numbers to sort:" << endl;
+	for (int i = 0; i < arrSize; i++)
+	{
+		cin >> numbers[i];
+		//read input values to sort
+	}
 }
 
-int main() 
+int main()
 {
-
-  bubbleSort numbers;
-  numbers.readIntegers();
-  return 0;
+	int sizeArr;
+	cout << "Enter the number of naturals:" << endl;
+	cin >> sizeArr;
+	bubbleSort numbers(sizeArr);
+	numbers.readIntegers();
+	numbers.bSort();
+	numbers.bPrint();
+	//return 0;
 }
+/*
+6
+8 3 6 2 7 1
+*/
