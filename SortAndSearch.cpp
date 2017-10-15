@@ -111,6 +111,12 @@ int main()
 		int sizeArr;
 		cout << "Enter the number of naturals:";
 		cin >> sizeArr;
+		while (!(sizeArr > 0 && sizeArr < 1000))
+		{
+			cout << "Plese provide an integer from 1 to 999." << endl;
+			cin >> sizeArr;
+			cout << endl;
+		}
 		bubbleSort numbers(sizeArr);
 		numbers.readIntegers();
 		numbers.bSort();
@@ -130,15 +136,14 @@ int main()
 		}
 		cout << endl << "Do you want to continue[Y / N]:";
 		cin >> wContinue;
-		while (wContinue != 'Y' || wContinue != 'y' || wContinue != 'N' || wContinue != 'n')
+		cout << endl;
+		while (wContinue != 'Y' && wContinue != 'y' && wContinue != 'N' && wContinue != 'n')
 		{
-			cout << "Plese type \"Y\" or \"N\""<<endl;
+			cout << "Plese type \"Y\" or \"N\"" << endl;
 			cin >> wContinue;
+			cout << endl;
 		}
 	}
-	//return 0;
+	cout << "Good Bye" << endl;
+	return 0;
 }
-/*
-6
-8 3 6 2 7 1
-*/
