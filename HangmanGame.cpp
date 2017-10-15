@@ -23,10 +23,12 @@ protected:
 class process : public randNumbers
 {
 public:
-	void playWithUser();//simulation of game
-	process(string gameLevel);//ask difficulty of game and create variable
+	void playWithUser();//simulation of game	
+	void setAttempts();//generate attempts
+	process(string gameLevel);//ask difficulty 
 protected:
 	int attempts;//num of attempts left
+	string level;
 };
 //Open file implementation, where the words are stored
 void fStreaming::openFile()
@@ -65,6 +67,21 @@ void randNumbers::getWord()
 		index++;
 	}
 }
+//initialize attempts variable
+void process::setAttempts()
+{
+	openFile();
+	getWord();
+
+}
+process::process(string gameLevel)
+{
+	level = gameLevel;
+}
 int main() {
+	string difficulty;
+	cout << "Set difficulty of game[easy/normal/hard]:";
+	cin >> difficulty;
+	cout << endl;
 	return 0;
 }
