@@ -78,10 +78,14 @@ process::process(string gameLevel)
 {
 	level = gameLevel;
 }
-int main() {
+int main() 
+{
 	string difficulty;
 	cout << "Set difficulty of game[easy/normal/hard]:";
 	cin >> difficulty;
 	cout << endl;
+
+	process game(difficulty);
+
 	return 0;
 }
