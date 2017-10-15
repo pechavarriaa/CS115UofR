@@ -173,7 +173,7 @@ int main()
 	}
       //wait for valid answer
     }
-  cout << "Good Bye" << endl;//end of program
+  cout << "Good Bye!" << endl;//end of program
   return 0;
 }
 /*
