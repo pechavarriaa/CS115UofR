@@ -42,15 +42,19 @@ void bubbleSort::bSort()
 {
 	int length = 0;
 	length = arrSize;
-	for( int j = 0 ; j < arrSize; j++ )
-		for (int i = 0; i < arrSize; i++)
+	bool isSorted = true;
+	while (isSorted) {
+		isSorted = false;
+		for (int i = 0; i < length; i++)
 		{
-			if (numbers[i] > numbers[i++])
+			if (numbers[i] > numbers[i+1])
 			{
 				swap(numbers[i], numbers[i + 1]);
+				isSorted = true;
 			}
 		}
-	length--;
+		length--;
+	}
 }
 
 void bubbleSort::bPrint()
