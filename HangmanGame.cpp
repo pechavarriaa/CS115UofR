@@ -1,7 +1,7 @@
-#include <iostream>
-#include <fstream>
-#include <string>
-#include <ctime>
+#include <iostream>//cin and cout
+#include <fstream>//iostream
+#include <string>//strings use
+#include <ctime>//time(NULL) for rand
 
 using namespace std;
 
@@ -72,6 +72,11 @@ void randNumbers::getWord()
 		index++;
 	}
 }
+//constructor initialized with game level
+process::process(string gameLevel)
+{
+	level = gameLevel;
+}
 //initialize attempts variable
 void process::setAttempts()
 {
@@ -101,9 +106,56 @@ void process::setAttempts()
 		attempts = min(differentLetters,15);
 	}
 }
-process::process(string gameLevel)
+void process::playWithUser()
 {
-	level = gameLevel;
+  bool indexGuessded[110]={false};//help to print * asterisk
+  char readChar;//read from user
+  int lettersNotGuessed = word.length();//letters that have not been guessed
+	while(attempts>0 && lettersNotGuessed>0)//attempts left and letters missing
+	{
+		bool checkAnswer=false;//check if user guessed right
+		cout<<"Guess a Letter (You Have "<<attempts<<" tries left): ";
+		cin>>readChar;
+		for(int i =0;i<word.length();i++)
+		{
+			//check if match and that has not been guessed before
+			if(word[i]==readChar && indexGuessded[i]==false)
+			{
+				indexGuessded[i]=true;//check index
+				checkAnswer = true;//user guessed well
+				lettersNotGuessed--;//one less 
+			}
+		}
+		if(checkAnswer)//check if user guessed
+			cout<<"Right!. "<<endl;	
+		else
+		{
+			cout<<"Wrong! Try Again. ";
+			attempts--;
+			//user has one attempt left
+		}
+		if(attempts==0 || lettersNotGuessed==0)//avoid printing word is so far...
+			continue;
+		cout<<"Word so far is: ";
+		for(int i =0;i<word.length();i++)
+		{
+			if(indexGuessded[i])
+			cout<<word[i];
+			else
+			cout<<"*";
+		}
+		cout<<endl;
+	}
+
+	//give feedback to player
+	if(attempts==0)
+		cout<<"Game Over :("<<endl;
+
+	else if(lettersNotGuessed==0)
+		cout<<"Congratulations :) you Guessed the word!!"<<endl;
+	
+		cout<<"Word -> "<<int(word.length)<<endl;
+
 }
 int main()
 {
@@ -120,5 +172,8 @@ int main()
 	game.openFile();
 	game.getWord();
 	game.closeFile();
+
+	game.setAttempts();
+	game.playWithUser();
 	return 0;
 }
