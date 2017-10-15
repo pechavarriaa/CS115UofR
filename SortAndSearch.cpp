@@ -1,3 +1,42 @@
+//  ========================================================================== 
+// | Assignment One : CALCULATOR
+// |
+// | Author : PABLO ECHAVARRIA
+// | Language : C++
+// | Instructor : MUSTAKIM AL HELAL
+// | Due Date : SUNDAY, OCTOBER, 1, 2017 AT 11:59PM
+//  +--------------------------------------------------------------------------
+// | Description :         Write a program to model a simple calculator. Each data line 
+// |			   should consist of the next operation to be performed from the 
+// |			   list below and the right operand. Assume the left operand is 
+// |			   the accumulator value (initial value of 0). You need a function
+// |			   scan_data with two output parameters that returns the operator
+// |			   and right operand scanned from a data line. You need a function
+// |			   do_next_op that performs the required operation. do_next_op has 
+// |			   two input parameters (the operator and operand) and one
+// |			   input/output parameter (the accumulator). 
+// |			   The valid operators are:
+// |			   +	add
+// |			   -	subtract
+// |			   * 	multiply
+// |			   /	divide
+// |			   ^	power(raise left operand to power of right operand)
+// |
+// | Input : + 10
+// |         / 0
+// |         / 2.0
+// |         & 2
+// |         ^ 2
+// |         q 0
+// | 
+// | Output : Result so far is 10.0
+// |          Result so far is 10.0
+// |          Result so far is 5.0
+// |          Result so far is 5.0
+// |          Result so far is 25.0
+// |          Final result is 25.0
+// |
+//  ============================================================================
 /*The bubble sort is another technique for sorting an array. A bubble sort
   compares adjacent array elements and exchanges their values if they’re
   out of order. In this way, the smaller values “bubble” to the top of the
@@ -147,3 +186,7 @@ int main()
 	cout << "Good Bye" << endl;
 	return 0;
 }
+/*
+6
+8 3 6 2 7 1
+*/
