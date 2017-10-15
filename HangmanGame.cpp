@@ -2,7 +2,11 @@
 #include <fstream>
 #include <string>
 #include <ctime>
+
 using namespace std;
+
+const int ALPHABET = 26; //Letters in the dictionary
+
 class fStreaming
 {
 public:
@@ -29,6 +33,7 @@ public:
 protected:
 	int attempts;//num of attempts left
 	string level;
+	int strLetters[ALPHABET] = { 0 };// Array for counting letters
 };
 //Open file implementation, where the words are stored
 void fStreaming::openFile()
@@ -60,9 +65,9 @@ void randNumbers::getWord()
 	string temp;
 	while (wordsFile >> temp)
 	{
-		if (index == randWord)//FInd random word index
+		if (index == randWord)//Find random word index
 		{
-			word = temp;
+			word = temp;//Save random word
 		}
 		index++;
 	}
@@ -70,15 +75,37 @@ void randNumbers::getWord()
 //initialize attempts variable
 void process::setAttempts()
 {
-	openFile();
-	getWord();
+	for (int i = 0; i < word.length(); i++)
+	{
+		strLetters[int(word[i] - 'a')]++;
+	}
+	int differentLetters = 0; //Quantity of different letters
+	for (int i = 0; i < ALPHABET; i++)
+	{
+		if (strLetters[i] > 0)
+		{
+			differentLetters++;
+		}
+	}
 
+	if (level == "hard")
+	{
+		attempts = differentLetters;
+	}
+	else if (level == "normal")
+	{
+		attempts = differentLetters * 2;
+	}
+	else
+	{
+
+	}
 }
 process::process(string gameLevel)
 {
 	level = gameLevel;
 }
-int main() 
+int main()
 {
 	string difficulty;
 	cout << "Set difficulty of game[easy/normal/hard]:";
@@ -86,6 +113,12 @@ int main()
 	cout << endl;
 
 	process game(difficulty);
+	game.openFile();
+	game.countWords();
+	game.closeFile();
 
+	game.openFile();
+	game.getWord();
+	game.closeFile();
 	return 0;
 }
