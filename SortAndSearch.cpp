@@ -40,7 +40,17 @@ bubbleSort::bubbleSort(int n)
 
 void bubbleSort::bSort()
 {
-	sort(numbers, numbers + arrSize);
+	int length = 0;
+	length = arrSize;
+	for( int j = 0 ; j < arrSize; j++ )
+		for (int i = 0; i < arrSize; i++)
+		{
+			if (numbers[i] > numbers[i++])
+			{
+				swap(numbers[i], numbers[i + 1]);
+			}
+		}
+	length--;
 }
 
 void bubbleSort::bPrint()
