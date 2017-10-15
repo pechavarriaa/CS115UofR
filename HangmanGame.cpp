@@ -94,11 +94,11 @@ void process::setAttempts()
 	}
 	else if (level == "normal")
 	{
-		attempts = differentLetters * 2;
+		attempts = (differentLetters * 3)/2;
 	}
-	else
+	else if (levels == "easy")
 	{
-
+		attempts = min(differentLetters,15);
 	}
 }
 process::process(string gameLevel)
