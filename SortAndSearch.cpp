@@ -1,40 +1,25 @@
 //  ========================================================================== 
-// | Assignment One : CALCULATOR
+// | Assignment Two : SortAndSearch
 // |
 // | Author : PABLO ECHAVARRIA
 // | Language : C++
 // | Instructor : MUSTAKIM AL HELAL
-// | Due Date : SUNDAY, OCTOBER, 1, 2017 AT 11:59PM
+// | Due Date : SUNDAY, OCTOBER, 15, 2017 AT 11:59PM
 //  +--------------------------------------------------------------------------
-// | Description :         Write a program to model a simple calculator. Each data line 
-// |			   should consist of the next operation to be performed from the 
-// |			   list below and the right operand. Assume the left operand is 
-// |			   the accumulator value (initial value of 0). You need a function
-// |			   scan_data with two output parameters that returns the operator
-// |			   and right operand scanned from a data line. You need a function
-// |			   do_next_op that performs the required operation. do_next_op has 
-// |			   two input parameters (the operator and operand) and one
-// |			   input/output parameter (the accumulator). 
-// |			   The valid operators are:
-// |			   +	add
-// |			   -	subtract
-// |			   * 	multiply
-// |			   /	divide
-// |			   ^	power(raise left operand to power of right operand)
+// | Description :     Using functions, write a C++ program:
+// |                   1. that sorts a list of natural numbers using the bubble sort algorithm described in project
+// |                       4, page 557, chapter 9, sixth edition (or project 4, page 483, chapter 9, fifth edition)
+// |                   2. and then looks for a particular number using the binary search algorithm defined in
+// |                      project 12, page 560, chapter 9, sixth edition (or project 12, page 486, chapter 9, fifth edition).    
 // |
-// | Input : + 10
-// |         / 0
-// |         / 2.0
-// |         & 2
-// |         ^ 2
-// |         q 0
+// | Input :  5
+// |          2 3 1 4 5
+// |          3
+// |          Y
 // | 
-// | Output : Result so far is 10.0
-// |          Result so far is 10.0
-// |          Result so far is 5.0
-// |          Result so far is 5.0
-// |          Result so far is 25.0
-// |          Final result is 25.0
+// | Output : 
+// |          1 2 3 4 5
+// |          Number 3 is found at position 3
 // |
 //  ============================================================================
 /*The bubble sort is another technique for sorting an array. A bubble sort
@@ -47,146 +32,151 @@
   array contains one less element. Write and test a function that
   implements this sorting method.*/
 
-#include <iostream>
-#include <algorithm>
+//headers
+#include <iostream>//cin and cout
+#include <algorithm>//swap(int,int)
 
-using namespace std;
+using namespace std;//avoid using std::
 
-const int ARR_SIZE = 1000;
+const int ARR_SIZE = 1000;//max size of array
 
-class readNumbers {
+class readNumbers {//class to read numbers
 public:
-	void readIntegers();
+  void readIntegers();//function to read integers
 protected:
-	int numbers[ARR_SIZE];
-	int arrSize;
+  int numbers[ARR_SIZE];//array to hold numbers
+  int arrSize;//size of array
 };
 
-class bubbleSort :public readNumbers {
+class bubbleSort :public readNumbers {//function to sort and sear
 public:
-	void bSort();
-	void bPrint();
-	int bSearch(int searchNumber);
-	//int search(int searchNumber);
-	bubbleSort(int n);
+  void bSort();//function to do bubble sort
+  void bPrint();//function to print
+  int bSearch(int searchNumber);//binary search
+  bubbleSort(int n);//constructor for initialize arrSize from base class readIntegers
 };
-
+//constructor
 bubbleSort::bubbleSort(int n)
 {
-	//Constructor
-	arrSize = n;
+  arrSize = n;//initialize arrSize with value from user
 }
-
+//bubble sort implementation
 void bubbleSort::bSort()
 {
-	int length = 0;
-	length = arrSize;
-	bool isSorted = true;
-	while (isSorted) {
-		isSorted = false;
-		for (int i = 0; i < length - 1; i++)
-		{
-			if (numbers[i] > numbers[i + 1])
-			{
-				swap(numbers[i], numbers[i + 1]);
-				isSorted = true;
-			}
-		}
-		length--;
-	}
-}
+  int length = arrSize;//used for not modify arrSize
 
+  bool isSorted = true;//boolean to check if is still sorted or not
+  while (isSorted) {
+    isSorted = false;
+    for (int i = 0; i < length - 1; i++)//iterate trough
+      {
+	if (numbers[i] > numbers[i + 1])
+	  {
+	    swap(numbers[i], numbers[i + 1]);//swap numbers if they are not in order
+	    isSorted = true;//if there is a swap we have to continue sorting
+	  }
+      }
+    length--;//as last number is in order, decrease list number
+  }
+}
+//print numbers
 void bubbleSort::bPrint()
 {
-	cout << "Numbers sorted in ascending order :" << endl;
-	for (int i = 0; i < arrSize; i++)
-		cout << numbers[i] << " ";
-	cout << endl;
+  cout << "Numbers sorted in ascending order :" << endl;
+  for (int i = 0; i < arrSize; i++)//iterate trough list and print numbers
+    cout << numbers[i] << " ";
+  cout << endl;
 }
-
+//Binary Search
 int bubbleSort::bSearch(int searchNumber)
 {
-	int beggining = 0;
-	int middle = 0;
-	int end = 0;
-	end = arrSize;
+  //binary search parameters
+  int beggining = 0;
+  int middle = 0;
+  int end = arrSize;
 
-	while (beggining <= end)
+  while (beggining <= end)
+    {
+      middle = (beggining + end) / 2;
+      if (numbers[middle] == searchNumber)
 	{
-		middle = (beggining + end) / 2;
-		if (numbers[middle] == searchNumber)
-		{
-			return middle + 1;
-		}
-		else if (searchNumber > numbers[middle])
-		{
-			beggining = middle + 1;
-		}
-		else if (searchNumber < numbers[middle])
-		{
-			end = middle - 1;
-		}
+	  return middle + 1;//return index for number
 	}
-	return -1;
+      else if (searchNumber > numbers[middle])
+	{
+	  beggining = middle + 1;//check in the right side of the half
+	}
+      else if (searchNumber < numbers[middle])
+	{
+	  end = middle - 1;//check in the left side of the half
+	}
+    }
+  return -1;//number not found
 
 }
+//read input from user
 void readNumbers::readIntegers()
 {
 
-	//read how many integers are going to be sorted
-	cout << "Enter the natural numbers to sort:" << endl;
-	for (int i = 0; i < arrSize; i++)
-	{
-		cin >> numbers[i];
-		//read input values to sort
-	}
+  //read how many integers are going to be sorted
+  cout << "Enter the natural numbers to sort:" << endl;
+  for (int i = 0; i < arrSize; i++)
+    {
+      cin >> numbers[i];
+      //read input values to sort
+    }
 }
 
 int main()
 {
-	char wContinue = 'Y';
-	while (wContinue == 'Y' || wContinue == 'y')
+  char wContinue = 'Y';//while user continue using the program
+  while (wContinue == 'Y' || wContinue == 'y')
+    {
+      int sizeArr;
+      cout << "Enter the number of naturals:";//ask for list size
+      cin >> sizeArr;
+      while (!(sizeArr > 0 && sizeArr < 1000))//ask for valid number
 	{
-		int sizeArr;
-		cout << "Enter the number of naturals:";
-		cin >> sizeArr;
-		while (!(sizeArr > 0 && sizeArr < 1000))
-		{
-			cout << "Plese provide an integer from 1 to 999." << endl;
-			cin >> sizeArr;
-			cout << endl;
-		}
-		bubbleSort numbers(sizeArr);
-		numbers.readIntegers();
-		numbers.bSort();
-		numbers.bPrint();
-		cout << "Enter the number to search: ";
-		int numberToSearch = 0;
-		cin >> numberToSearch;
-		int indexNumber = numbers.bSearch(numberToSearch);
-
-		if (indexNumber == -1)
-		{
-			cout << "Number " << numberToSearch << " does not exist!" << endl;
-		}
-		else
-		{
-			cout << "Number " << numberToSearch << " is found at position:" << indexNumber << endl;
-		}
-		cout << endl << "Do you want to continue[Y / N]:";
-		cin >> wContinue;
-		cout << endl;
-		while (wContinue != 'Y' && wContinue != 'y' && wContinue != 'N' && wContinue != 'n')
-		{
-			cout << "Plese type \"Y\" or \"N\"" << endl;
-			cin >> wContinue;
-			cout << endl;
-		}
+	  cout << "Plese provide an integer from 1 to 999." << endl;
+	  cin >> sizeArr;
+	  cout << endl;
 	}
-	cout << "Good Bye" << endl;
-	return 0;
+      
+      bubbleSort numbers(sizeArr);//create bubbleSort type with constructor
+      numbers.readIntegers();//read numbers from user
+      numbers.bSort();//sort numbers
+      numbers.bPrint();//print in order numbers
+      
+      cout << "Enter the number to search: ";//ask for search numbers
+      int numberToSearch = 0;
+      cin >> numberToSearch;
+      int indexNumber = numbers.bSearch(numberToSearch);//index number that function returns
+
+      if (indexNumber == -1)//number not found
+	{
+	  cout << "Number " << numberToSearch << " does not exist!" << endl;
+	}
+      else//number at X position
+	{
+	  cout << "Number " << numberToSearch << " is found at position:" << indexNumber << endl;
+	}
+      
+      cout << endl << "Do you want to continue[Y / N]:";//ask user to continue
+      cin >> wContinue;
+      cout << endl;
+      
+      while (wContinue != 'Y' && wContinue != 'y' && wContinue != 'N' && wContinue != 'n')
+	{
+	  cout << "Plese type \"Y\" or \"N\"" << endl;
+	  cin >> wContinue;
+	  cout << endl;
+	}
+      //wait for valid answer
+    }
+  cout << "Good Bye" << endl;//end of program
+  return 0;
 }
 /*
-6
-8 3 6 2 7 1
+  6
+  8 3 6 2 7 1
 */
