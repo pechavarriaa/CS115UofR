@@ -27,10 +27,10 @@ class bubbleSort :public readNumbers {
 public:
 	void bSort();
 	void bPrint();
+	int bSearch(int searchNumber);
 	//int search(int searchNumber);
 	bubbleSort(int n);
 };
-
 
 bubbleSort::bubbleSort(int n)
 {
@@ -59,9 +59,49 @@ void bubbleSort::bSort()
 
 void bubbleSort::bPrint()
 {
+	cout << "Numbers sorted in ascending order :" << endl;
 	for (int i = 0; i < arrSize; i++)
 		cout << numbers[i] << " ";
 	cout << endl;
+}
+
+int bubbleSort::bSearch(int searchNumber)
+{
+	/*Enter the number of naturals : 10
+		Enter the natural numbers to sort :
+	12 34 4 0 22 3 6 18 1 11
+		Numbers sorted in ascending order :
+	0 1 3 4 6 11 12 18 22 34
+		Enter the number to search : 3
+		Number 3 is found at position 2
+		Do you want to continue[Y / N] : Y
+		Enter the number to search : 5
+		Number 5 does not exist!
+		Do you want to continue[Y / N] : N
+		Good bye!*/
+	int beggining = 0;
+	int middle = 0;
+	int end = 0;
+	end = arrSize;
+
+	while (beggining <= end)
+	{
+		middle = (beggining + end) / 2;
+		if (numbers[middle] == searchNumber)
+		{
+			return middle;
+		}
+		else if (searchNumber > numbers[middle])
+		{
+			beggining = middle + 1;
+		}
+		else if (searchNumber < numbers[middle])
+		{
+			end = middle - 1;
+		}
+	}
+	return -1;
+
 }
 void readNumbers::readIntegers()
 {
@@ -78,12 +118,27 @@ void readNumbers::readIntegers()
 int main()
 {
 	int sizeArr;
-	cout << "Enter the number of naturals:" << endl;
+	cout << "Enter the number of naturals:";
 	cin >> sizeArr;
 	bubbleSort numbers(sizeArr);
 	numbers.readIntegers();
 	numbers.bSort();
 	numbers.bPrint();
+	cout << "Enter the number to search : ";
+	int numberToSearch = 0;
+	cin >> numberToSearch;
+	int indexNumber = numbers.bSearch(numberToSearch);
+		
+	if (indexNumber == -1) 
+	{
+		cout << "The number is not in the list";
+	}
+	else
+	{
+		cout << "Number " << numberToSearch << " is found at position " << indexNumber;
+	}
+	
+	
 	//return 0;
 }
 /*
