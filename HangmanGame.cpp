@@ -139,15 +139,18 @@ void process::setAttempts()
 	//update level difficulty based on user input
 	if (level == "hard")
 	{
-		attempts = differentLetters;
+		if (differentLetters > 1)//if there is a one word letter we need to check that
+			attempts = (differentLetters) / 2;
+		else
+			attempts = differentLetters;
 	}
 	else if (level == "normal")
 	{
-		attempts = (differentLetters * 3) / 2;
+		attempts = differentLetters;
 	}
 	else if (level == "easy")
 	{
-		attempts = min(differentLetters, 15);
+		attempts = differentLetters + 3;
 	}
 }
 void process::playWithUser()
@@ -203,8 +206,8 @@ void process::playWithUser()
 }
 int main()
 {
-	char kPlaying='y';//read char from user 
-	while (kPlaying =='y')
+	char kPlaying = 'y';//read char from user 
+	while (kPlaying == 'y')
 	{
 		//ask difficulty to user
 		string difficulty = "";
@@ -243,6 +246,6 @@ int main()
 			//wait until user enter a valid answer
 		}
 	}
-	cout << "Good Bye, thanks for Playing!" << endl;
+	cout << endl << "Good Bye, thanks for Playing!" << endl;
 	return 0;
 }
