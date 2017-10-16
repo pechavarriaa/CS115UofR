@@ -68,7 +68,6 @@ public:
 	void playWithUser();//simulation of game	
 	void setAttempts();//generate attempts
 	process(string gameLevel);//ask difficulty 
-	~process();
 protected:
 	int attempts;//num of attempts left
 	string level;
@@ -117,9 +116,6 @@ process::process(string gameLevel)
 	level = gameLevel;
 }
 
-process::~process() {
-
-}
 //initialize attempts variable
 void process::setAttempts()
 {
