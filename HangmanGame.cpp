@@ -1,6 +1,7 @@
 #include <iostream>//cin and cout
 #include <fstream>//iostream
 #include <string>//strings use
+#include <cstdlib> //srand,rand 
 #include <ctime>//time(NULL) for rand
 
 using namespace std;
@@ -101,7 +102,7 @@ void process::setAttempts()
 	{
 		attempts = (differentLetters * 3)/2;
 	}
-	else if (levels == "easy")
+	else if (level == "easy")
 	{
 		attempts = min(differentLetters,15);
 	}
@@ -144,7 +145,7 @@ void process::playWithUser()
 			else
 			cout<<"*";
 		}
-		cout<<endl;
+		cout<<endl<<endl;
 	}
 
 	//give feedback to player
@@ -154,7 +155,7 @@ void process::playWithUser()
 	else if(lettersNotGuessed==0)
 		cout<<"Congratulations :) you Guessed the word!!"<<endl;
 	
-		cout<<"Word -> "<<int(word.length)<<endl;
+		cout<<"Word -> "<<word<<endl;
 
 }
 int main()
@@ -165,6 +166,7 @@ int main()
 	cout << endl;
 
 	process game(difficulty);
+	
 	game.openFile();
 	game.countWords();
 	game.closeFile();
