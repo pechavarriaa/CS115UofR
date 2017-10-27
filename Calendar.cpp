@@ -40,10 +40,29 @@
 //headers
 #include <iostream>// I/O library (cin, cout)
 #include <iomanip> // I/O manipulation (fixed, setprecision())
+
 using namespace std;// avoid ::std for cin and cout
 
-#include "iostream"
+class DateInitialization
+{
+public:
+		DateInitialization();
+};
+DateInitialization :: DateInitialization (void)
+{
+	string date;
+	date = "01-01-1900";
+}
 
+class DateToInt
+{
+public:
+	DateToInt();
+};
+DateToInt::DateToInt(void)
+{
+
+}
 int main()
 {
 
