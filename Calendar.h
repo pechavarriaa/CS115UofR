@@ -23,11 +23,14 @@ public:
 	FullDate(int, int, int); // Function for fonverting the date (string) into integers.
 	string toString();
 	void stringToInt();
+	bool check();
+	void intToString();
 	int endOfMonth();
-	FullDate nextDate(int, int, int);
-	void operator++(); 
+	FullDate nextDate();
+	FullDate operator ++ (int);
+	string compareDates(FullDate);
 	int month;
 	int day;
 	int year;
 };
-
+bool checkInput(string, FullDate &);

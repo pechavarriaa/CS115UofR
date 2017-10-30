@@ -48,12 +48,30 @@ int main()
 
 	FullDate dateObj(month, day, year);	//Created for 01-01-1900 running two constructors
 	dateObj.stringToInt(); //Passing values from the string date converting them to three variables int for manipulation
-
-	//cout << dateObj.date<<endl;
-	//cout << dateObj.month << dateObj.day << dateObj.year<<endl;
-
+	cout << "Enter the first date using the format mm - dd - yyyy: " << endl;
 	cin >> date; //Reading string of date of format mm-dd-yyyy
-	dateObj.setDate(date);
-	dateObj.stringToInt();
+	
+	while (checkInput(date, dateObj) == false)
+	{
+		cout << "Incorrect day!" << endl;
+		cout << "Enter the first date using the format mm - dd - yyyy: " << endl;
+		cin >> date; //Reading string of date of format mm-dd-yyyy
+	}
+
+
+	cout << "The string version of the date is : ";
 	cout << dateObj.toString() << endl;
+
+	cout << "The next date in string version is :";
+	FullDate nextDay = dateObj.nextDate();
+	cout << nextDay.toString() << endl;
+
+	cout << "Enter the second date using the format mm - dd - yyyy : ";
+	FullDate secondDateObj(month, day, year);
+	cin >> date;
+	secondDateObj.setDate(date);
+	secondDateObj.stringToInt();
+
+	cout << dateObj.compareDates(secondDateObj) << endl;
+
 }
