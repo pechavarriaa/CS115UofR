@@ -10,20 +10,24 @@ using namespace std;// avoid ::std for cin and cout
 class DateInitialization // Class for initalizing the first day of the calendar in the programs as default.
 {
 public:
+
 	DateInitialization();
-	void stringToInt(int &, int &, int &);
+	void setDate(string);
 
-
-protected:
 	string date;
 };
 
-class DateToInt : public DateInitialization //Funtion for setting the first day before the user input any day
+class FullDate : public DateInitialization //Funtion for setting the first day before the user input any day
 {
 public:
-	DateToInt(int, int, int); // Function for fonverting the date (string) into integers.
-	int day;
+	FullDate(int, int, int); // Function for fonverting the date (string) into integers.
+	string toString();
+	void stringToInt();
+	int endOfMonth();
+	FullDate nextDate(int, int, int);
+	void operator++(); 
 	int month;
+	int day;
 	int year;
 };
 

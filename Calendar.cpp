@@ -36,18 +36,24 @@
 //// |		The first date comes after the second one.
 //// |
 ////  ============================================================================
-
+// http://www.cs.uregina.ca/Links/class-info/115/08-overloading/
 #include "Calendar.h"
 
 int main()
 {
-	int month;
-	int day;
+	int month = 0;
+	int day = 0;
 	int year = 0;
 	string date;
 
-	DateInitialization dateInitalization;
-	dateInitalization.stringToInt(month, day, year);
-	DateToInt dateToInt(month, day, year);
+	FullDate dateObj(month, day, year);	//Created for 01-01-1900 running two constructors
+	dateObj.stringToInt(); //Passing values from the string date converting them to three variables int for manipulation
+
+	//cout << dateObj.date<<endl;
+	//cout << dateObj.month << dateObj.day << dateObj.year<<endl;
+
 	cin >> date; //Reading string of date of format mm-dd-yyyy
+	dateObj.setDate(date);
+	dateObj.stringToInt();
+	cout << dateObj.toString() << endl;
 }
