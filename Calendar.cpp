@@ -21,18 +21,18 @@
 //// |							 equal to the argument date.
 //// |
 //// |			A simple run of the driver program follows.
-//// |		Enter the first date using the format mm - dd - yyyy: 12 - 32 - 2000
+//// |		Enter the first date using the format mm - dd - yyyy: 12-32-2000
 //// |		Incorrect day!
-//// |		Enter the first date using the format mm - dd - yyyy : 12 - 31 - 2000
+//// |		Enter the first date using the format mm - dd - yyyy : 12-31-2000
 //// |		The string version of the date is : December 31st, 2000
 //// |		The next date in string version is : January 1st, 2001
-//// |		Enter the second date using the format mm - dd - yyyy : 12 - 01 - 2001
+//// |		Enter the second date using the format mm - dd - yyyy : 12-01-2001
 //// |		The first date comes before the second one.
 //// |		Another run :
-//// |		Enter the first date using the format mm - dd - yyyy : 02 - 28 - 2005
+//// |		Enter the first date using the format mm - dd - yyyy : 02-28-2005
 //// |		The string version of the date is : February 28th, 2005
 //// |		The next date in string version is : March 1st, 2005
-//// |		Enter the second date using the format mm - dd - yyyy : 01 - 10 - 2005
+//// |		Enter the second date using the format mm - dd - yyyy : 01-10-2005
 //// |		The first date comes after the second one.
 //// |
 ////  ============================================================================
@@ -48,16 +48,11 @@ int main()
 
 	FullDate dateObj(month, day, year);	//Created for 01-01-1900 running two constructors
 	dateObj.stringToInt(); //Passing values from the string date converting them to three variables int for manipulation
-	cout << "Enter the first date using the format mm - dd - yyyy: " << endl;
-	cin >> date; //Reading string of date of format mm-dd-yyyy
-	
-	while (checkInput(date, dateObj) == false)
-	{
-		cout << "Incorrect day!" << endl;
-		cout << "Enter the first date using the format mm - dd - yyyy: " << endl;
-		cin >> date; //Reading string of date of format mm-dd-yyyy
-	}
+	cout << "Enter the first date using the format mm-dd-yyyy : " << endl;
+	getline(cin, date); //Reading string of date of format mm-dd-yyyy
 
+	
+	processInput(date, dateObj,true);
 
 	cout << "The string version of the date is : ";
 	cout << dateObj.toString() << endl;
@@ -66,11 +61,12 @@ int main()
 	FullDate nextDay = dateObj.nextDate();
 	cout << nextDay.toString() << endl;
 
-	cout << "Enter the second date using the format mm - dd - yyyy : ";
+	cout << "Enter the second date using the format mm-dd-yyyy : ";
 	FullDate secondDateObj(month, day, year);
-	cin >> date;
-	secondDateObj.setDate(date);
-	secondDateObj.stringToInt();
+
+	getline(cin, date); //Reading string of date of format mm-dd-yyyy
+
+	processInput(date, secondDateObj,false);
 
 	cout << dateObj.compareDates(secondDateObj) << endl;
 

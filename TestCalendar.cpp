@@ -11,11 +11,10 @@ void  FullDate::stringToInt()
 	month = year = day = 0; //To clear previos date
 	month = (date[0] - '0') * 10 + (date[1] - '0');
 	day = (date[3] - '0') * 10 + (date[4] - '0');
-	for (int i = 6; i < 10; i++)
+	for (int i = 6; i < date.size(); i++)
 		year = year * 10 + (date[i] - '0');
 
 }
-
 bool FullDate::check()
 {
 	if (month > 12)
@@ -82,7 +81,7 @@ int FullDate::endOfMonth()
 		return finalDate[month - 1];
 	else
 	{
-		if (year % 400 || (year % 4 == 0 && year % 4 != 0))
+		if (year % 400 == 0 || (year % 4 == 0 && year % 4 != 0))
 			return 29;
 		else
 			return 28;
@@ -150,6 +149,7 @@ void DateInitialization::setDate(string userDate)
 {
 	date = userDate;
 }
+
 bool checkInput(string date, FullDate &dateObj)
 {
 	bool ck = false; //check input
@@ -165,6 +165,7 @@ bool checkInput(string date, FullDate &dateObj)
 			if (date[i] != '-')
 				ck = true;
 		}
+	
 	}
 	if (ck == false)
 	{
@@ -174,4 +175,17 @@ bool checkInput(string date, FullDate &dateObj)
 			ck = true;
 	}
 	return !ck;
+}
+void processInput(string date, FullDate &dateObj,bool firstOrSecond)
+{
+
+	while (checkInput(date, dateObj) == false)
+	{
+		cout << "Incorrect day!" << endl;
+		if(firstOrSecond)
+		cout << "Enter the first date using the format mm-dd-yyyy: " << endl;
+		else
+		cout << "Enter the second date using the format mm-dd-yyyy: " << endl;
+		getline(cin, date); //Reading string of date of format mm-dd-yyyy
+	}
 }

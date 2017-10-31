@@ -33,4 +33,6 @@ public:
 	int day;
 	int year;
 };
+
 bool checkInput(string, FullDate &);
+void processInput(string, FullDate &,bool);

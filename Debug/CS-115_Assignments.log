@@ -1,2 +1,8 @@
-﻿  TestCalendar.cpp
+﻿  Calendar.cpp
+  Generating Code...
+  Compiling...
+  TestCalendar.cpp
+TestCalendar.cpp(14): warning C4018: '<': signed/unsigned mismatch
+TestCalendar.cpp(156): warning C4018: '<': signed/unsigned mismatch
+  Generating Code...
   CS-115_Assignments.vcxproj -> C:\Users\Juan Echavarria\Google Drive\Programming\CS-115_Assignments\Debug\CS-115_Assignments.exe
