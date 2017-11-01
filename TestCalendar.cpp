@@ -64,9 +64,9 @@ string FullDate::toString()
 			continue;
 		ordinalNumbers[i] = to_string(i + 1) + "th";
 	}
-	ordinalNumbers[30] = "21st";
-	ordinalNumbers[30] = "22nd";
-	ordinalNumbers[30] = "23rd";
+	ordinalNumbers[20] = "21st";
+	ordinalNumbers[21] = "22nd";
+	ordinalNumbers[22] = "23rd";
 	ordinalNumbers[30] = "31st";
 	string returnedDate = ""; // String declaration
 	returnedDate = monthName[month - 1] + " " + ordinalNumbers[day - 1] + ", " + to_string(year); // String concatenation for result
