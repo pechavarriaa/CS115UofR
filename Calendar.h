@@ -7,7 +7,8 @@
 
 using namespace std;// avoid ::std for cin and cout
 
-class DateInitialization // Class for initalizing the first day of the calendar in the programs as default.
+// Class for initalizing the first day of the calendar in the programs as default
+class DateInitialization
 {
 public:
 
@@ -17,22 +18,22 @@ public:
 	string date;
 };
 
-class FullDate : public DateInitialization //Funtion for setting the first day before the user input any day
+//Funtion for setting the first day before the user input any day
+class FullDate : public DateInitialization
 {
 public:
-	FullDate(int, int, int); // Function for fonverting the date (string) into integers.
-	string toString();
-	void stringToInt();
-	bool check();
-	void intToString();
-	int endOfMonth();
-	FullDate nextDate();
-	FullDate operator ++ (int);
-	string compareDates(FullDate);
+	FullDate(int, int, int);	// Function for fonverting the date (string) into integers.
+	string toString();	//Funtion for converting the integers of the date into string type by name of the month and ordinal number
+	void stringToInt();	//Function for converting the string that the user input into three integers for month, day and year
+	bool check();	//Checks that the format of the string is the correct
+	int endOfMonth();	//Checks for each month which is its last day of the month
+	FullDate nextDate();	//Calculates the next day for the first day that the user input
+	FullDate operator ++ (int);	//Operator overloading for adding one day to the first that that the user input
+	string compareDates(FullDate);	//Comparison of dates between the first and the second input of the user
 	int month;
 	int day;
 	int year;
 };
 
-bool checkInput(string, FullDate &);
-void processInput(string, FullDate &,bool);
+bool checkInput(string, FullDate &);	//Checks if the input is typed correctly
+void processInput(string, FullDate &,bool);	//If the input is not correct it asks for type the date again

@@ -30,24 +30,6 @@ bool FullDate::check()
 	return true; //If the day is in the boundaries the function returns true;
 }
 
-////	Function for converting the date into the string version of 
-//void FullDate::intToString()
-//{
-//	string m;
-//	if (month < 10)
-//		m = "0" + to_string(month);
-//	else
-//		m = to_string(month);
-//
-//	string d;
-//	if (day < 10)
-//		d = "0" + to_string(day);
-//	else
-//		d = to_string(day);
-//
-//	date = m + "-" + d + "-" + to_string(year);
-//}
-
 //	Function for converting the integers values of month, day and year into string version with name of the month and the ordinal number of the day
 string FullDate::toString()
 {
@@ -122,29 +104,32 @@ FullDate FullDate::operator ++ (int)
 	return *this;
 }
 
-//
+//Function for generating the next day with operator overloading
 FullDate FullDate::nextDate()
 {
 	FullDate temp(month, day, year); //Declaring temporal of the class FullDate
 	temp++; //Operator overloading for the next day
 	return temp;
 }
+
+//Function for comparing the first date inputed and the second one and decides which one was after the other one
 string FullDate::compareDates(FullDate secondDate)
 {
-	int caseTrinary;
-	if (year < secondDate.year)
+	int caseTrinary; //Variable for deciding which one goes after the other one or if it is the same date
+
+	if (year < secondDate.year) //Comparing years
 		caseTrinary = 0;
 	else if (year > secondDate.year)
 		caseTrinary = 1;
-	else
+	else 
 	{
-		if (month < secondDate.month)
+		if (month < secondDate.month) //Comparing months
 			caseTrinary = 0;
 		else if (month > secondDate.month)
 			caseTrinary = 1;
 		else
 		{
-			if (day < secondDate.day)
+			if (day < secondDate.day) //Comparing days
 				caseTrinary = 0;
 			else if (day > secondDate.day)
 				caseTrinary = 1;
@@ -152,6 +137,7 @@ string FullDate::compareDates(FullDate secondDate)
 				caseTrinary = 2;
 		}
 	}
+	//Returning wich one goes after the other one
 	if (caseTrinary == 0)
 		return "The first date comes before the second one.";
 	else if (caseTrinary == 1)
@@ -159,40 +145,48 @@ string FullDate::compareDates(FullDate secondDate)
 	else
 		return "The first date and the second date are the same date.";
 }
+
+//Constructor wich initializes a date object to the 01-01-1900 day
 DateInitialization::DateInitialization(void)
 {
 	date = "01-01-1900";
 }
+
+//Assigning the value that the user inputed for the second date to the date variable
 void DateInitialization::setDate(string userDate)
 {
 	date = userDate;
 }
+
+//Function for checking if the user inputed the answer in the corrcet format
 bool checkInput(string date, FullDate &dateObj)
 {
-	bool ck = false; //check input
+	bool ck = false; //Check input
 	for (int i = 0; i < date.size(); i++)
 	{
-		if (i != 2 && i != 5)
+		if (i != 2 && i != 5)//Looking for the numbers
 		{
-			if (!(date[i] >= '0' && date[i] <= '9'))
+			if (!(date[i] >= '0' && date[i] <= '9'))//Checking that all of the characters are numbers
 				ck = true;
 		}
 		else
 		{
-			if (date[i] != '-')
+			if (date[i] != '-')//Checking for the hyphen
 				ck = true;
 		}
 
 	}
-	if (ck == false)
+	if (ck == false)//If it comes in to this is because the date is in the correct format
 	{
-		dateObj.setDate(date);
-		dateObj.stringToInt();
+		dateObj.setDate(date);//Assigning the date into the variable date
+		dateObj.stringToInt();//Converting the date from string to int for opeations
 		if (dateObj.check() == false)
 			ck = true;
 	}
-	return !ck;
+	return !ck;//Returning the bool into the while for the function processInput
 }
+
+//Function for telling the user that it typed the date wrong, and it asks again to input the date
 void processInput(string date, FullDate &dateObj, bool firstOrSecond)
 {
 
