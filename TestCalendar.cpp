@@ -96,7 +96,7 @@ int FullDate::endOfMonth()
 		return finalDate[month - 1];
 	else
 	{
-		if (year % 400 == 0 || (year % 4 == 0 && year % 4 != 0)) //If it is February checks if the year is leap or not.
+		if (year % 400 == 0 || (year % 4 == 0 && year % 100 != 0)) //If it is February checks if the year is leap or not.
 			return 29;	//Leap year
 		else
 			return 28; //Not a leap year
