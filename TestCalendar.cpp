@@ -44,14 +44,14 @@ string FullDate::toString()
 	{
 		if (i + 1 > 20 && i + 1 < 24)
 			continue;
-		ordinalNumbers[i] = to_string(i + 1) + "th";
+		ordinalNumbers[i] = SSTR(i + 1) + "th";
 	}
 	ordinalNumbers[20] = "21st";
 	ordinalNumbers[21] = "22nd";
 	ordinalNumbers[22] = "23rd";
 	ordinalNumbers[30] = "31st";
 	string returnedDate = ""; // String declaration
-	returnedDate = monthName[month - 1] + " " + ordinalNumbers[day - 1] + ", " + to_string(year); // String concatenation for result
+	returnedDate = monthName[month - 1] + " " + ordinalNumbers[day - 1] + ", " + SSTR(year); // String concatenation for result
 	return returnedDate; // Returning the date with month name and ordinal number type as a string
 }
 
