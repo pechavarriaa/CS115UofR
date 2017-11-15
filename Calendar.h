@@ -1,10 +1,14 @@
-#pragma once
 
 //headers
 #include <iostream>// I/O library (cin, cout)
 #include <iomanip> // I/O manipulation (fixed, setprecision())
 #include <string> // String library for manipulating strings of any character type.
+#include <sstream>//to convert int to string in c++ 98
 
+#define SSTR( x ) static_cast< std::ostringstream & >( \
+        ( std::ostringstream() << std::dec << x ) ).str()
+//definition to convert int to string with sstream
+		
 using namespace std;// avoid ::std for cin and cout
 
 // Class for initalizing the first day of the calendar in the programs as default
