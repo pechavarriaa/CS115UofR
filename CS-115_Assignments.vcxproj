@@ -19,11 +19,11 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Calendar.cpp" />
-    <ClCompile Include="TestCalendar.cpp" />
+    <ClCompile Include="Matrix.cpp" />
+    <ClCompile Include="TestMatrix.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Calendar.h" />
+    <ClInclude Include="Matrix.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>15.0</VCProjectVersion>
