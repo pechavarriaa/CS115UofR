@@ -4,27 +4,39 @@ using namespace std;
 
 int main()
 {
-	MatrixOp Obj;
-
+	int rows;
+	int columns;
+	int n;
 	cout << "Enter the number of rows: ";
-	cin >> Obj.rows;
+	cin >> rows;
 	cout << "Enter the number of columns:";
-	cin >> Obj.columns;
+	cin >> columns;
 
-	cout << "Enter the elements of matrix 1 row by row:" << endl;
-	Obj.readMatrix(Obj.rows, Obj.columns, Obj.matrixOne);
+	
+	MatrixOp mOne(rows, columns);
+	MatrixOp mTwo(rows, columns);
+	
 
-	cout << "Enter the elements of matrix 2 row by row:" << endl;
-	Obj.readMatrix(Obj.rows, Obj.columns, Obj.matrixTwo);
-	cout << "Add" << "\n";
-	Obj.add(Obj.rows, Obj.columns, Obj.matrixOne, Obj.matrixTwo, Obj.addMatrix);
-	Obj.print(Obj.rows, Obj.columns, Obj.addMatrix);
-	int n = 2; //It is needed to change this, the user has to input the value.
-	Obj.power(Obj.rows, Obj.columns, n, Obj.matrixOne, Obj.powerMatrix);
-	cout << "Power" << "\n";
-	Obj.print(Obj.rows, Obj.columns, Obj.powerMatrix);
+	cout << "Enter the elements of matrix 1 row by row:\n";
+	mOne.readMatrix();
 
-	Obj.operator==(Obj.matrixTwo);
+	cout << "Enter the elements of matrix 2 row by row:\n";
+	mTwo.readMatrix();
+
+	cout << "matrix 1 == matrix 2?\n";
+	if (mOne == mTwo)
+		cout << "Yes\n";
+	else
+		cout << "No\n";
+
+	cout << "matrix 1 + matrix 2:\n";
+	MatrixOp obj = mOne.add(mTwo);
+	obj.print();
+
+	cout << "matrix 1 power n. Enter n: ";
+	cin >> n;
+	mOne.power(n);
+	mOne.print();
 }
 
 /*

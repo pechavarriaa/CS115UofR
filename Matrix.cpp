@@ -1,53 +1,75 @@
 #include "Matrix.h"
 
-void MatrixOp::add(int &r, int &c, int matrixOne[][maxRows], int matrixTwo[][maxRows], int addMatrix[][maxRows])
+MatrixOp::MatrixOp(int r, int c)
 {
-	for (int i = 0; i < r; i++)
+	rows = r;
+	columns = c;
+}
+
+MatrixOp MatrixOp::add(MatrixOp mTwo)
+{
+	MatrixOp temp(rows, columns);
+	for (int i = 0; i < rows; i++)
 	{
-		for (int j = 0; j < c; j++)
+		for (int j = 0; j < columns; j++)
 		{
-			addMatrix[i][j] = matrixOne[i][j] + matrixTwo[i][j];
+			temp.matrix[i][j] = matrix[i][j] + mTwo.matrix[i][j];
 		}
 	}
+	return temp;
 }
-void MatrixOp::readMatrix(int &r, int &c, int fillMatrix[][maxRows])
+void MatrixOp::readMatrix()
 {
-	int temp = 0;
-	for (int i = 0; i < r; i++)
+	for (int i = 0; i < rows; i++)
 	{
-		for (int j = 0; j < c; j++)
+		for (int j = 0; j < columns; j++)
 		{
-			cin >> temp;
-			fillMatrix[i][j] = temp;
+			cin >> matrix[i][j];
 		}
 	}
 }
 
-void MatrixOp::print(int &r, int &c, int addMatrix[][maxRows])
+void MatrixOp::print()
 {
-	for (int i = 0; i < r; i++)
+	for (int i = 0; i < rows; i++)
 	{
-		for (int j = 0; j < c; j++)
+		for (int j = 0; j < columns; j++)
 		{
-			cout << addMatrix[i][j] << " ";
+			cout << matrix[i][j] << " ";
 		}
 		cout << "\n";
 	}
 	cout << "\n";
 }
 
-void MatrixOp::power(int &r, int &c, int &n, int matrixOne[][maxRows], int powerMatrix[][maxRows])
+void MatrixOp::power(int n)
 {
-	for (int i = 0; i < r; i++)
+	for (int i = 0; i < rows; i++)
 	{
-		for (int j = 0; j < c; j++)
+		for (int j = 0; j < columns; j++)
 		{
-			powerMatrix[i][j] = 1;
+			int x = 1;
 			for (int z = 0; z < n; z++)
 			{
-				powerMatrix[i][j] *= matrixOne[i][j];
+				x *= matrix[i][j];
 			}
+			matrix[i][j] = x;
 		}
 	}
 
+}
+
+bool MatrixOp::operator== (MatrixOp mTwo)
+{
+	for (int i = 0; i < rows; i++)
+	{
+		for (int j = 0; j < columns; j++)
+		{
+			if (matrix[i][j] != mTwo.matrix[i][j])
+			{
+				return false;
+			}
+		}
+	}
+	return true;
 }
