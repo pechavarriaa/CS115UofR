@@ -4,31 +4,27 @@ using namespace std;
 
 int main()
 {
-	int rows = 0;
-	int columns = 0;
-	int matrixOne[maxColumns][maxRows] = {};
-	int matrixTwo[maxColumns][maxRows] = {};
-	int addMatrix[maxColumns][maxRows] = {};
-	int powerMatrix[maxColumns][maxRows] = {};
-
 	MatrixOp Obj;
+
 	cout << "Enter the number of rows: ";
-	cin >> rows;
+	cin >> Obj.rows;
 	cout << "Enter the number of columns:";
-	cin >> columns;
+	cin >> Obj.columns;
 
 	cout << "Enter the elements of matrix 1 row by row:" << endl;
-	Obj.readMatrix(rows, columns, matrixOne);
+	Obj.readMatrix(Obj.rows, Obj.columns, Obj.matrixOne);
 
 	cout << "Enter the elements of matrix 2 row by row:" << endl;
-	Obj.readMatrix(rows, columns, matrixTwo);
+	Obj.readMatrix(Obj.rows, Obj.columns, Obj.matrixTwo);
 	cout << "Add" << "\n";
-	Obj.add(rows, columns, matrixOne, matrixTwo, addMatrix);
-	Obj.print(rows, columns, addMatrix);
-	int n = 2;
-	Obj.power(rows, columns, n, matrixOne, powerMatrix);
+	Obj.add(Obj.rows, Obj.columns, Obj.matrixOne, Obj.matrixTwo, Obj.addMatrix);
+	Obj.print(Obj.rows, Obj.columns, Obj.addMatrix);
+	int n = 2; //It is needed to change this, the user has to input the value.
+	Obj.power(Obj.rows, Obj.columns, n, Obj.matrixOne, Obj.powerMatrix);
 	cout << "Power" << "\n";
-	Obj.print(rows, columns, powerMatrix);
+	Obj.print(Obj.rows, Obj.columns, Obj.powerMatrix);
+
+	Obj.operator==(Obj.matrixTwo);
 }
 
 /*
