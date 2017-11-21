@@ -19,11 +19,11 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="TicTacToe.h" />
+    <ClCompile Include="Matrix.cpp" />
+    <ClCompile Include="TestMatrix.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="TestTicTacToe.cpp" />
-    <ClCompile Include="TicTacToe.cpp" />
+    <ClInclude Include="Matrix.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>15.0</VCProjectVersion>

@@ -7,23 +7,24 @@
 
 using namespace std;
 
-const int maxRows = 100;
-const int maxColumns = 100;
+const int maxRows = 100; //Maximum of rows
+const int maxColumns = 100; //Maximum of columns
 
 class MatrixOp
 {
 public:
+	//Initialization of variables
 	int rows = 0;
 	int columns = 0;
 	int matrix[maxColumns][maxRows] = {};
 
-	MatrixOp(int, int);
+	MatrixOp(int, int);//Constructor passing values for rows and columns
 
-	MatrixOp add(MatrixOp mTwo);
-	void readMatrix();
-	void print();
-	void power(int n);
+	MatrixOp add(MatrixOp mTwo);//Adding two objects
+	void readMatrix();//Function for reading two matrices
+	void print(); //Funtion for printing result of matrices
+	void power(int n); //Function for elevate each number of the matrix two the integer n
 	
 	
-	bool operator==(MatrixOp mTwo);	
+	bool operator==(MatrixOp mTwo);	//Operator overloading
 };

@@ -1,24 +1,24 @@
 #include "Matrix.h"
 
-MatrixOp::MatrixOp(int r, int c)
+MatrixOp::MatrixOp(int r, int c)//Constructor
 {
-	rows = r;
+	rows = r; 
 	columns = c;
 }
 
-MatrixOp MatrixOp::add(MatrixOp mTwo)
+MatrixOp MatrixOp::add(MatrixOp mTwo)//Adding the two matrices of type MatrixOp
 {
 	MatrixOp temp(rows, columns);
 	for (int i = 0; i < rows; i++)
 	{
 		for (int j = 0; j < columns; j++)
 		{
-			temp.matrix[i][j] = matrix[i][j] + mTwo.matrix[i][j];
+			temp.matrix[i][j] = matrix[i][j] + mTwo.matrix[i][j];//Adding numbers in the position of i and j
 		}
 	}
-	return temp;
+	return temp; //Returning matrix
 }
-void MatrixOp::readMatrix()
+void MatrixOp::readMatrix()//
 {
 	for (int i = 0; i < rows; i++)
 	{
